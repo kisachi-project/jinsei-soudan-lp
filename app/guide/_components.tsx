@@ -38,43 +38,43 @@ export const cases = [
   {
     title: "仕事",
     person: "40代 男性　会社員",
-    before: "仕事のプレッシャーが大きく、毎日がつらく感じていました。",
-    after: "自分の強みや働き方が整理でき、前向きに行動できるようになりました。",
+    concern: "仕事の責任が重なり、気持ちを切り替えられない日が続いていました。",
+    voice: "話す中で、今すぐ変えることと少し待っていいことを分けて考えられました。",
     icon: BriefcaseIcon,
   },
   {
     title: "恋愛・パートナー",
     person: "20代 女性　大学生",
-    before: "相手の気持ちが分からず、不安でいっぱいでした。",
-    after: "自分の気持ちが整理でき、自然に向き合えるようになりました。",
+    concern: "相手の気持ちばかり考えてしまい、自分の本音が分からなくなっていました。",
+    voice: "否定されずに聞いてもらえたことで、自分がどうしたいのかを落ち着いて考えられました。",
     icon: HeartIcon,
   },
   {
     title: "お金・将来",
     person: "50代 女性　パート",
-    before: "将来のお金のことが不安で、何から考えたらいいか分かりませんでした。",
-    after: "優先順位が明確になり、安心して将来を考えられるようになりました。",
+    concern: "将来のお金のことが漠然と不安で、何から見直せばいいか分かりませんでした。",
+    voice: "不安を一つずつ言葉にしたら、まず確認することが見えてきました。",
     icon: YenIcon,
   },
   {
     title: "人間関係",
     person: "30代 男性　会社員",
-    before: "職場の人間関係がうまくいかず、毎日気が重かったです。",
-    after: "考え方のクセに気づき、人との距離感がちょうどよくなりました。",
+    concern: "職場での距離感に悩み、毎日気をつかいすぎて疲れていました。",
+    voice: "自分だけで抱え込まなくていいと思えて、少し肩の力が抜けました。",
     icon: PeopleIcon,
   },
   {
     title: "家族・親子",
     person: "50代 女性　専業主婦",
-    before: "子どもとの関係に悩み、どう接したらいいか分かりませんでした。",
-    after: "子どもの気持ちを理解できるようになり、会話が増えて関係が良くなりました。",
+    concern: "家族のことだからこそ感情的になってしまい、誰にも話せずにいました。",
+    voice: "自分の気持ちも大切にしていいと分かり、落ち着いて向き合えそうだと思えました。",
     icon: HomeIcon,
   },
   {
     title: "将来・自分の生き方",
     person: "20代 男性　フリーランス",
-    before: "将来のことが漠然と不安で、自分のやりたいことが分かりませんでした。",
-    after: "やりたいことが見つかり、自分らしく進む一歩を踏み出せました。",
+    concern: "このままでいいのか不安で、考えるほど動けなくなっていました。",
+    voice: "今の気持ちを整理したことで、次に試してみたいことが少し見えてきました。",
     icon: SproutIcon,
   },
 ];
@@ -178,7 +178,7 @@ export const faqs = [
   {
     question: "キャンセルや日程変更は可能ですか？",
     answer:
-      "可能です。分かった時点で早めにご連絡ください。",
+      "可能です。ご都合が変わった場合は、分かった時点で早めにご連絡ください。",
   },
   {
     question: "どの時間帯に相談できますか？",
@@ -249,13 +249,9 @@ export function PageHero({
   description: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-ivory px-5 py-16 sm:px-8 sm:py-20 lg:px-9">
-      <img
-        src={photos.plant}
-        alt=""
-        className="absolute left-0 top-0 hidden h-full w-[28%] object-cover object-left md:block"
-      />
-      <div className="absolute right-0 top-0 hidden h-full w-[24%] bg-gradient-to-l from-white/70 to-transparent md:block" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-ivory to-white px-5 py-16 sm:px-8 sm:py-20 lg:px-9">
+      <div className="absolute left-8 top-10 hidden h-28 w-px bg-brand-beige/35 md:block" />
+      <div className="absolute right-10 bottom-8 hidden h-16 w-16 rounded-full border border-brand-beige/25 md:block" />
       <div className="relative mx-auto max-w-[860px] text-center">
         <h1 className="text-4xl font-bold leading-[1.35] tracking-[0.08em] text-brand-navy sm:text-5xl">
           {title}
@@ -287,9 +283,7 @@ export function ContactBand({
 }) {
   return (
     <section className="px-5 pb-10 sm:px-8 lg:px-9">
-      <div className="mx-auto grid max-w-[1220px] overflow-hidden rounded-2xl bg-brand-ivory shadow-[0_16px_45px_rgba(31,58,86,0.06)] lg:grid-cols-[0.42fr_0.58fr]">
-        <img src={photos.plant} alt="" className="hidden h-full min-h-56 w-full object-cover lg:block" />
-        <div className="px-6 py-9 text-center sm:px-10">
+      <div className="mx-auto max-w-[980px] overflow-hidden rounded-2xl bg-brand-ivory px-6 py-10 text-center shadow-[0_16px_45px_rgba(31,58,86,0.06)] sm:px-10">
           <p className="text-2xl font-bold leading-[1.55] tracking-[0.06em] text-brand-navy sm:text-3xl">
             {title}
           </p>
@@ -298,7 +292,6 @@ export function ContactBand({
             <InstagramButton />
           </div>
           <p className="mt-4 text-sm font-medium text-brand-ink/66">LINEからのご相談がおすすめです。</p>
-        </div>
       </div>
     </section>
   );
