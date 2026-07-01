@@ -1,15 +1,14 @@
 import {
   ContactBand,
-  HomeIcon,
   InstagramButton,
+  LeafIcon,
   LineButton,
   PageShell,
   photos,
   SectionTitle,
+  SparkleIcon,
   SproutIcon,
-  supports,
   worries,
-  YenIcon,
   PeopleIcon,
 } from "./guide/_components";
 
@@ -22,7 +21,40 @@ const consultItems = [
   "自分の気持ちの整理　など",
 ];
 
-const supportCards = supports.filter((item) => item.title !== "メッセージ相談（LINE）");
+const supportCards = [
+  {
+    title: "初回相談",
+    lead: "まずはお気軽にご相談ください。",
+    price: "2,980",
+    pricePrefix: "30分",
+    points: [
+      "どんなお悩みでも大丈夫です。",
+      "無理な勧誘は一切ありません。",
+      "安心してご利用いただけます。",
+    ],
+    icon: LeafIcon,
+  },
+  {
+    title: "継続サポート",
+    lead: "必要な方にはご案内しております。",
+    points: [
+      "初回相談後、ご希望や状況に応じて",
+      "継続的なサポートもご案内しています。",
+      "あなたのペースに合わせて進めます。",
+    ],
+    icon: PeopleIcon,
+  },
+  {
+    title: "オプション",
+    lead: "ご希望に合わせたサポートをご用意。",
+    points: [
+      "必要に応じて、さまざまなサポートを",
+      "ご用意しています。",
+      "詳しくはLINEよりお問い合わせください。",
+    ],
+    icon: SparkleIcon,
+  },
+];
 
 export default function Home() {
   return (
@@ -97,7 +129,7 @@ export default function Home() {
       <section className="bg-white px-5 pb-16 sm:px-8 sm:pb-20 lg:px-9">
         <div className="mx-auto grid max-w-[1060px] gap-10 lg:grid-cols-[0.48fr_0.52fr] lg:items-center">
           <div className="overflow-hidden rounded-xl">
-            <img src={photos.plant} alt="" className="h-[330px] w-full object-cover" />
+            <img src={photos.table} alt="" className="h-[330px] w-full object-cover" />
           </div>
           <div>
             <h2 className="text-3xl font-bold tracking-[0.08em] text-brand-navy">相談できること</h2>
@@ -123,24 +155,54 @@ export default function Home() {
             {supportCards.map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="relative overflow-hidden rounded-2xl bg-brand-ivory p-7 shadow-[0_14px_36px_rgba(31,58,86,0.06)]">
+                <article
+                  key={item.title}
+                  className="relative flex min-h-[330px] flex-col overflow-hidden rounded-2xl bg-brand-ivory p-7 shadow-[0_14px_36px_rgba(31,58,86,0.06)]"
+                >
                   <div className="flex items-center gap-4">
-                    <span className="text-brand-navy">
+                    <span className="shrink-0 text-brand-navy">
                       <Icon />
                     </span>
-                    <div>
-                      <h2 className="text-2xl font-bold text-brand-navy">{item.title}</h2>
-                      <p className="mt-1 text-sm font-bold text-[#128c36]">{item.lead}</p>
+                    <div className="min-w-0">
+                      <h2 className="text-xl font-bold leading-tight text-brand-navy sm:text-2xl">{item.title}</h2>
+                      {"price" in item ? null : (
+                        <p className="mt-1 text-xs font-bold leading-6 text-[#128c36] sm:text-sm">
+                          {item.lead}
+                        </p>
+                      )}
                     </div>
                   </div>
-                  <p className="mt-6 text-sm font-medium leading-8 text-brand-ink/76">{item.text}</p>
-                  {item.title === "初回相談" && (
-                    <p className="mt-5 text-4xl font-bold tracking-normal text-[#128c36]">
-                      2,980<span className="ml-1 text-base">円（税込）</span>
-                    </p>
+                  {"price" in item ? (
+                    <>
+                      <ul className="mt-8 space-y-3 text-[13px] font-medium leading-7 text-brand-ink/78 sm:text-sm">
+                        {item.points.map((point) => (
+                          <li key={point} className="flex gap-2">
+                            <span className="shrink-0 font-bold text-brand-navy">✓</span>
+                            <span className="min-w-0">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-auto pt-7 text-center">
+                        <p className="text-base font-bold text-brand-navy">{item.pricePrefix}</p>
+                        <p className="mt-2 whitespace-nowrap text-[2.45rem] font-bold leading-none tracking-normal text-[#128c36] sm:text-[2.75rem]">
+                          {item.price}
+                          <span className="ml-1 align-baseline text-sm sm:text-base">円</span>
+                        </p>
+                        <p className="mt-1 text-xs font-bold text-[#128c36]">税込</p>
+                      </div>
+                    </>
+                  ) : (
+                    <ul className="mt-8 space-y-3 text-[13px] font-medium leading-7 text-brand-ink/78 sm:text-sm">
+                      {item.points.map((point) => (
+                        <li key={point} className="flex gap-2">
+                          <span className="shrink-0 font-bold text-brand-navy">✓</span>
+                          <span className="min-w-0">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   )}
-                  <div className="absolute -bottom-8 -right-8 text-brand-beige/30">
-                    {item.title === "初回相談" ? <YenIcon /> : item.title === "継続サポート" ? <PeopleIcon /> : <HomeIcon />}
+                  <div className="absolute -bottom-6 -right-6 text-brand-beige/25">
+                    <Icon />
                   </div>
                 </article>
               );
