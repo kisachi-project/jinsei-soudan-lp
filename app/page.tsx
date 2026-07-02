@@ -97,8 +97,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-10 overflow-hidden rounded-[2rem] shadow-[0_22px_60px_rgba(31,58,86,0.10)] lg:hidden">
-            <img src={photos.hero} alt="" className="h-[430px] w-full object-cover object-center" />
+          <div className="mt-10 overflow-hidden rounded-[1.5rem] bg-white shadow-[0_22px_60px_rgba(31,58,86,0.10)] lg:hidden">
+            <img src={photos.hero} alt="" className="aspect-[16/9] h-auto w-full object-contain" />
           </div>
         </div>
       </section>
